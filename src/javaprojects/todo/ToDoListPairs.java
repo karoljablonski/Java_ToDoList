@@ -42,6 +42,18 @@ public class ToDoListPairs {
                 Task task = tasks.get(index);
                 task.setUncompleted();
                 tasks.set(index, task);
+
+
+
+            }
+
+            if(read.startsWith("edit")) {
+                String message = read.replace("edit", "").trim(); //edit 0 new content > '0 new content'
+                int index = Integer.parseInt(message.substring(0, 1).trim());
+                String newContent = message.replace(String.valueOf(index), "").trim();
+                Task task = tasks.get(index);
+                task.setContent(newContent);
+                tasks.set(index, task);
             }
 
             printTasks(tasks);
